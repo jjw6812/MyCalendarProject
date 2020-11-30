@@ -111,9 +111,17 @@ public class DrawCalendar extends JPanel {
 					String title = box.getTitle();
 					home.setSelectedYY(ch_yy.getSelectedItem());
 					home.setSelectedMM(ch_mm.getSelectedItem());
-					if(Integer.parseInt(title)<10) {
+					if(Integer.parseInt(title)<10 && Integer.parseInt(ch_mm.getSelectedItem())<10) {
 						home.setSelectedDD("0"+title);
-						home.t_date.setText(ch_yy.getSelectedItem()+"-"+ch_mm.getSelectedItem()+"-0"+title);
+						home.setSelectedMM("0"+ch_mm.getSelectedItem());
+						home.t_date.setText(ch_yy.getSelectedItem()+"-"+"0"+ch_mm.getSelectedItem()+"-0"+title);
+					}else if(Integer.parseInt(title)>=10 && Integer.parseInt(ch_mm.getSelectedItem())<10){
+						home.setSelectedDD(title);
+						home.setSelectedMM("0"+ch_mm.getSelectedItem());
+						home.t_date.setText(ch_yy.getSelectedItem()+"-"+"0"+ch_mm.getSelectedItem()+"-"+title);
+					}else if(Integer.parseInt(title)<10 && Integer.parseInt(ch_mm.getSelectedItem())>=10){
+						home.setSelectedDD("0"+title);
+						home.t_date.setText(ch_yy.getSelectedItem()+"-"+ch_mm.getSelectedItem()+"-"+"0"+title);
 					}else {
 						home.setSelectedDD(title);
 						home.t_date.setText(ch_yy.getSelectedItem()+"-"+ch_mm.getSelectedItem()+"-"+title);
@@ -180,7 +188,15 @@ public class DrawCalendar extends JPanel {
 					String title = box.getTitle();
 					home.setSelectedYY(ch_yy.getSelectedItem());
 					home.setSelectedMM(ch_mm.getSelectedItem());
-					if(Integer.parseInt(title)<10) {
+					if(Integer.parseInt(title)<10 && Integer.parseInt(ch_mm.getSelectedItem())<10) {
+						home.setSelectedDD("0"+title);
+						home.setSelectedMM("0"+ch_mm.getSelectedItem());
+						home.t_date.setText(ch_yy.getSelectedItem()+"-0"+ch_mm.getSelectedItem()+"-0"+title);
+					}else if(Integer.parseInt(title)>=10 && Integer.parseInt(ch_mm.getSelectedItem())<10){
+						home.setSelectedDD(title);
+						home.setSelectedMM("0"+ch_mm.getSelectedItem());
+						home.t_date.setText(ch_yy.getSelectedItem()+"-0"+ch_mm.getSelectedItem()+"-"+title);
+					}else if(Integer.parseInt(title)<10 && Integer.parseInt(ch_mm.getSelectedItem())>=10){
 						home.setSelectedDD("0"+title);
 						home.t_date.setText(ch_yy.getSelectedItem()+"-"+ch_mm.getSelectedItem()+"-0"+title);
 					}else {
